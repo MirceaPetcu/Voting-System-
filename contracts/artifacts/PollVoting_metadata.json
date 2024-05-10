@@ -1,0 +1,219 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_timeManagement",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_securityContract",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "question",
+						"type": "string"
+					}
+				],
+				"name": "PollCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "optionId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "voter",
+						"type": "address"
+					}
+				],
+				"name": "PollVoted",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "admin",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "question",
+						"type": "string"
+					},
+					{
+						"internalType": "string[]",
+						"name": "options",
+						"type": "string[]"
+					}
+				],
+				"name": "createPoll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					}
+				],
+				"name": "getResults",
+				"outputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "",
+						"type": "uint256[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "polls",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "question",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "optionId",
+						"type": "uint256"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/PollVoting.sol": "PollVoting"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/PollTimeManagement.sol": {
+			"keccak256": "0x2beef9205132a202df602ad770c5887c8f4df82b6c84a09c846b15eefffe35ae",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d53a11917d8c7ee5fd8ea1b62d5e10bdbe0d2e09701e8caa7edeef012be22dfc",
+				"dweb:/ipfs/QmSbg5QrpL2PcrKzSnc6JpVmRoVcHiUo3V6E8iLJy6d2Gv"
+			]
+		},
+		"contracts/PollVoting.sol": {
+			"keccak256": "0x4965b47d7f56310c7f897bc3fafc95800b94cc2ea43ee70f9f8f4668ae955dd9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f7265973a6bce007553c372add67712bc9beb3b742450358c9cad7b8303ef3e3",
+				"dweb:/ipfs/QmRq9KnWVAnu28FFcdK4gCYwXomCC4wbrVHCRbuYjTMuJj"
+			]
+		},
+		"contracts/VotingSecurity.sol": {
+			"keccak256": "0xfa180879547f145ee1e56a0ebca21f596c99a7cd1d7ce1613552b20558ba1fe9",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://57852fdfc87db1a035ae20c99f2ff7035992fe922a1e071fec38b0c73fcace77",
+				"dweb:/ipfs/QmaTx2ZN5eHgGkFmGE9niwBYm8hth3sJcEXRPDeWEjcagt"
+			]
+		}
+	},
+	"version": 1
+}
