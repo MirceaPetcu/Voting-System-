@@ -35,6 +35,12 @@
 						"internalType": "string",
 						"name": "question",
 						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
 					}
 				],
 				"name": "PollCreated",
@@ -89,6 +95,11 @@
 						"internalType": "string[]",
 						"name": "options",
 						"type": "string[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "durationDays",
+						"type": "uint256"
 					}
 				],
 				"name": "createPoll",
@@ -104,12 +115,12 @@
 						"type": "uint256"
 					}
 				],
-				"name": "getResults",
+				"name": "getWinner",
 				"outputs": [
 					{
-						"internalType": "uint256[]",
-						"name": "",
-						"type": "uint256[]"
+						"internalType": "uint256",
+						"name": "winningOptionId",
+						"type": "uint256"
 					}
 				],
 				"stateMutability": "view",
@@ -159,7 +170,7 @@
 				],
 				"name": "vote",
 				"outputs": [],
-				"stateMutability": "nonpayable",
+				"stateMutability": "payable",
 				"type": "function"
 			}
 		],
@@ -191,19 +202,19 @@
 	},
 	"sources": {
 		"contracts/PollTimeManagement.sol": {
-			"keccak256": "0x2beef9205132a202df602ad770c5887c8f4df82b6c84a09c846b15eefffe35ae",
+			"keccak256": "0x03510ed17fbb20914d4033140089b637b05bc3048c7e7c53f4f52a95eebb5fd6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://d53a11917d8c7ee5fd8ea1b62d5e10bdbe0d2e09701e8caa7edeef012be22dfc",
-				"dweb:/ipfs/QmSbg5QrpL2PcrKzSnc6JpVmRoVcHiUo3V6E8iLJy6d2Gv"
+				"bzz-raw://12f7d07e751dd9f76c33a2216724a10ac35988309b968a4a7ccae2868c48d143",
+				"dweb:/ipfs/QmRMmbwaFKwXXjUWWTLXCmSWTZqktf9PFLk1t69LvJkmMe"
 			]
 		},
 		"contracts/PollVoting.sol": {
-			"keccak256": "0x4965b47d7f56310c7f897bc3fafc95800b94cc2ea43ee70f9f8f4668ae955dd9",
+			"keccak256": "0xea65f23ccdef11b083000754b9d11849bd74a1259d142707ce9bb0640f5e0413",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f7265973a6bce007553c372add67712bc9beb3b742450358c9cad7b8303ef3e3",
-				"dweb:/ipfs/QmRq9KnWVAnu28FFcdK4gCYwXomCC4wbrVHCRbuYjTMuJj"
+				"bzz-raw://713fec2e99fd0068a28f67d65be9de42ec3ddcf8bd788b69fa42c7f74dd7d625",
+				"dweb:/ipfs/QmdmjHZhfkSLPHHW72dQZ66TV2pcNtbitS8ARGUm8uUgbG"
 			]
 		},
 		"contracts/VotingSecurity.sol": {

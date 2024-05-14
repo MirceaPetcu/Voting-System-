@@ -7,6 +7,8 @@ contract PollTimeManagement {
         uint endTime;
     }
 
+    event PollDurationEvent(address sender);
+
     mapping(uint => PollDuration) public pollDurations;
     address public admin;
 
@@ -18,7 +20,8 @@ contract PollTimeManagement {
         _;
     }
 
-    function setPollDuration(uint pollId, uint start, uint end) public onlyAdmin {
+    function setPollDuration(uint pollId, uint start, uint end) public  {
+        emit PollDurationEvent(msg.sender);
         require(start < end, "Start time must be before end time.");
         pollDurations[pollId] = PollDuration(start, end);
     }
