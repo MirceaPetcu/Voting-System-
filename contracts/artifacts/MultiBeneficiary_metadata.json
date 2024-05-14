@@ -1,0 +1,138 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address payable",
+								"name": "beneficiary",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "weight",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct MultiBeneficiary.Beneficiary[]",
+						"name": "_beneficiaries",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address[]",
+						"name": "beneficiaries",
+						"type": "address[]"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256[]",
+						"name": "amounts",
+						"type": "uint256[]"
+					}
+				],
+				"name": "FundsDistributed",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "beneficiaries",
+				"outputs": [
+					{
+						"internalType": "address payable",
+						"name": "beneficiary",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "weight",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "distributeFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBeneficiaries",
+				"outputs": [
+					{
+						"internalType": "address[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/MultiBeneficiary.sol": "MultiBeneficiary"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/MultiBeneficiary.sol": {
+			"keccak256": "0xb17d5e5f1cfbd3628ea0f74421b0e39cceef5a86d9646c4c6b32d66c6c406526",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://b1289552e809e4f55a17106c6749d9a4c6d00d109e96a6c3e07356da1df4885e",
+				"dweb:/ipfs/QmUQSF7ZU61kw6bYTCiUVPGDZFxYYEk7t1wLjY972sJ8Es"
+			]
+		}
+	},
+	"version": 1
+}
