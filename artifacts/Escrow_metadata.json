@@ -1,0 +1,194 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract MultiBeneficiary",
+						"name": "_beneficiary",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsReceived",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "contract MultiBeneficiary",
+						"name": "beneficiaries",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsReleased",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "option",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addVote",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "options",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalContributions",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "releaseFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_totalVotes",
+						"type": "uint256"
+					}
+				],
+				"name": "setOptions",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "voteCounts",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "voteCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalContributions",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Escrow.Option[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Escrow.sol": "Escrow"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Escrow.sol": {
+			"keccak256": "0xdac9330a70a33bf20ee2a31ee514702dc511157b3aa40c02cfc183553c1e19d7",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fd294222910b05512e760602c293bb004d5c04fc5dcdc50ec9b13d24702edb21",
+				"dweb:/ipfs/QmduByg2CPF7HLjf2fVPoPAex6N8Tqbq38ztkCKjN3hcP9"
+			]
+		},
+		"contracts/MultiBeneficiary.sol": {
+			"keccak256": "0x492a1cab3d05e8ebf2ad13547c8ceabcbc006979792a1cf73ea7b34b944e999c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2bb2ca4c88a93190f242592084af41a0db3c93f21b4574ee348d75b36ad80e2e",
+				"dweb:/ipfs/QmQGxeK9CzSj9v5KyPNgW7JXYBZdenq25piNt6jLEUR5gK"
+			]
+		}
+	},
+	"version": 1
+}
