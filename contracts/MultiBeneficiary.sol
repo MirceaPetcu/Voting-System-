@@ -1,88 +1,95 @@
 // SPDX-License-Identifier: MIT
-import "./MultiBeneficiary.sol";
 pragma solidity ^0.8.0;
 
-contract Escrow {
-    MultiBeneficiary beneficiaries;
-
-    struct Option {
-        uint256 voteCount;
-        uint256 totalContributions;
+import "./Escrow.sol";
+import "./Poll.sol";
+contract MultiBeneficiary {
+    struct PollProposition {
+        string title;
+        string description;
+        string[] options;
+        uint256 deadline;
     }
-
-    Option[] public options;
-
-    event FundsReleased(MultiBeneficiary beneficiaries, uint256 amount);
+    address payable[] public beneficiaries;
+    PollProposition[] public pollProposions;
+    Poll[] public polls;
+    event FundsDistributed(address payable[] beneficiaries, uint256 amount);
+    event BeneficiaryAdded(address beneficiary);
+    event PollCreated(address indexed pollAddress);
+    event EscrowCreated(address indexed escrowAddress);
     event FundsReceived(address sender, uint256 amount);
 
-    modifier validOptionIndex(uint256 option) {
-        require(option < options.length, "Invalid option index");
-        _;
+    
+   
+    constructor() {
+        beneficiaries.push(payable(msg.sender));
     }
-
-    constructor(MultiBeneficiary  _beneficiary) {
-        beneficiaries = _beneficiary;
-    }
-
     receive() external payable {
         emit FundsReceived(msg.sender, msg.value);
     }
-
-    function incrementVote(uint256 voteCount) private pure returns (uint256) {
-        uint256 newCount = voteCount + 1;  
-        return newCount;
+    function calculateAmount(uint256 totalAmount, uint256 length) private  pure returns (uint256) {
+        uint256 amount = totalAmount / length;
+        return amount;
     }
-
-    function addAmount(uint256 totalContributions, uint256 amount) private pure returns (uint256) {
-        uint256 newContribution = totalContributions + amount;  
-        return newContribution;
-    }
-
-    function addVote(uint256 option, uint256 amount) external payable validOptionIndex(option){
-        uint256 newCount = incrementVote(options[option].voteCount);
-        options[option].voteCount = newCount ;
-        uint256 newContribution = addAmount(options[option].totalContributions, amount);
-        options[option].totalContributions += newContribution;
-    }
-
-    function returnAllFunds(address[] memory voters) external {
-        address payable [] memory b = getBeneficiaries();
-        for (uint256 i = 0; i < b.length; i++) {
-            require(address(msg.sender) == b[i], "You must be one of the beneficiaries!");
-        }
-
-        for (uint i = 0; i < voters.length; i++) { 
-            (bool success, ) = voters[i].call{value: address(this).balance}("");
-            require(success, "Failed to send Ether"); 
+    function distributeFundsLogic(uint256 amount) internal {
+        for (uint256 i = 0; i < beneficiaries.length; i++) {
+            beneficiaries[i].transfer(amount);
         }
     }
-
-    function setOptions (uint256 _totalVotes) public  {
-         for (uint i = 0; i < _totalVotes; i++) {
-             options.push(Option({ voteCount: 0, totalContributions: 0 }));
-         } 
+    function proposePoll(string memory _title, string memory _description, string[] memory _options, uint256 _deadline) external {
+        PollProposition memory poll = PollProposition({
+            title: _title,
+            description: _description,
+            options: _options,
+            deadline: _deadline
+        });
+        pollProposions.push(poll);
     }
+    function acceptPoll(uint256 pollId) external {
 
-    function releaseFunds() public {
-        address payable [] memory b = getBeneficiaries();
-        for (uint256 i = 0; i < b.length; i++) {
-            require(address(msg.sender) == b[i], "You must be one of the beneficiaries!");
+        Escrow escrow = new Escrow(this);
+        PollProposition storage proposition = pollProposions[pollId];
+        Poll newPoll = new Poll(proposition.title, proposition.description, proposition.options, proposition.deadline, escrow);
+        polls.push(newPoll);
+
+        emit PollCreated(address(newPoll));  
+        emit EscrowCreated(address(escrow));
+    }
+    function denyPoll(uint256 pollId) external {
+
+        for (uint i = pollId; i < pollProposions.length - 1; i++) {
+            pollProposions[i] = pollProposions[i + 1];
         }
-    
-        uint256 amount = address(this).balance;
-
-        (bool success, ) = address(beneficiaries).call{value: amount}("");
-        require(success, "Failed to send Ether");
-
-        beneficiaries.distributeFunds(amount);
-        emit FundsReleased(beneficiaries, amount);
+        pollProposions.pop();
     }
-    
-    function voteCounts() public view returns (Option[] memory) {
-        return options;
+    function createPoll(string memory _title, string memory _description, string[] memory _options, uint256 _deadline) external {
+        Escrow escrow = new Escrow(this);
+        Poll newPoll = new Poll(_title, _description, _options, _deadline, escrow);
+        polls.push(newPoll);
+        emit PollCreated(address(newPoll));  
+        emit EscrowCreated(address(escrow));
     }
+    function getPolls() external view returns (Poll[] memory) {
+        return polls;
+    }
+    function addBeneficiary(address _beneficiary) public {
+        require(_beneficiary != address(0), "Cannot add zero address as beneficiary");
 
-    function getBeneficiaries() public view returns(address payable [] memory){
-        return beneficiaries.getBeneficiaries();
+        address payable newBeneficiary = payable(_beneficiary);
+        for (uint256 i = 0; i < beneficiaries.length; i++) {
+            require(beneficiaries[i] != newBeneficiary, "Address already a beneficiary");
+        }
+        beneficiaries.push(newBeneficiary);
+        emit BeneficiaryAdded(newBeneficiary);
+    }
+    function distributeFunds(uint256 totalAmount) public {
+        uint256 amount = calculateAmount(totalAmount, beneficiaries.length);
+
+        distributeFundsLogic(amount);
+
+        emit FundsDistributed(beneficiaries, amount);
+    }
+    function getBeneficiaries() public view returns (address payable [] memory) {
+        return beneficiaries;
     }
 }
