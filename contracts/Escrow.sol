@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 import "./MultiBeneficiary.sol";
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.19;
 
 contract Escrow {
     MultiBeneficiary beneficiaries;

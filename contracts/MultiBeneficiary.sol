@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.19;
 
 import "./Escrow.sol";
 import "./Poll.sol";
@@ -62,12 +62,15 @@ contract MultiBeneficiary {
         }
         pollProposions.pop();
     }
-    function createPoll(string memory _title, string memory _description, string[] memory _options, uint256 _deadline) external {
+    function createPoll(string memory _title, string memory _description, string[] memory _options, uint256 _deadline) external returns (Poll){
         Escrow escrow = new Escrow(this);
         Poll newPoll = new Poll(_title, _description, _options, _deadline, escrow);
         polls.push(newPoll);
+        
         emit PollCreated(address(newPoll));  
         emit EscrowCreated(address(escrow));
+
+        return newPoll;
     }
     function getPolls() external view returns (Poll[] memory) {
         return polls;
@@ -92,4 +95,5 @@ contract MultiBeneficiary {
     function getBeneficiaries() public view returns (address payable [] memory) {
         return beneficiaries;
     }
+
 }
