@@ -3,6 +3,8 @@ pragma solidity ^0.8.19;
 
 import "./Escrow.sol";
 import "./Poll.sol";
+import "./PollSystem.sol";
+
 contract MultiBeneficiary {
     struct PollProposition {
         string title;
@@ -13,6 +15,7 @@ contract MultiBeneficiary {
     address payable[] public beneficiaries;
     PollProposition[] public pollProposions;
     Poll[] public polls;
+    PollSystem pollSystem;
     event FundsDistributed(address payable[] beneficiaries, uint256 amount);
     event BeneficiaryAdded(address beneficiary);
     event PollCreated(address indexed pollAddress);
@@ -21,7 +24,8 @@ contract MultiBeneficiary {
 
     
    
-    constructor() {
+    constructor(PollSystem _pollSystem) {
+        pollSystem = _pollSystem;
         beneficiaries.push(payable(msg.sender));
     }
     receive() external payable {
@@ -45,28 +49,29 @@ contract MultiBeneficiary {
         });
         pollProposions.push(poll);
     }
-    function acceptPoll(uint256 pollId) external {
+    // function acceptPoll(uint256 pollId) external {
 
-        Escrow escrow = new Escrow(this);
-        PollProposition storage proposition = pollProposions[pollId];
-        Poll newPoll = new Poll(proposition.title, proposition.description, proposition.options, proposition.deadline, escrow);
-        polls.push(newPoll);
+    //     Escrow escrow = new Escrow(this);
+    //     PollProposition storage proposition = pollProposions[pollId];
+    //     Poll newPoll = new Poll(proposition.title, proposition.description, proposition.options, proposition.deadline, escrow);
+    //     polls.push(newPoll);
 
-        emit PollCreated(address(newPoll));  
-        emit EscrowCreated(address(escrow));
-    }
-    function denyPoll(uint256 pollId) external {
+    //     emit PollCreated(address(newPoll));  
+    //     emit EscrowCreated(address(escrow));
+    // }
+    // function denyPoll(uint256 pollId) external {
 
-        for (uint i = pollId; i < pollProposions.length - 1; i++) {
-            pollProposions[i] = pollProposions[i + 1];
-        }
-        pollProposions.pop();
-    }
+    //     for (uint i = pollId; i < pollProposions.length - 1; i++) {
+    //         pollProposions[i] = pollProposions[i + 1];
+    //     }
+    //     pollProposions.pop();
+    // }
     function createPoll(string memory _title, string memory _description, string[] memory _options, uint256 _deadline) external returns (Poll){
         Escrow escrow = new Escrow(this);
         Poll newPoll = new Poll(_title, _description, _options, _deadline, escrow);
         polls.push(newPoll);
-        
+        pollSystem.addPoll(newPoll);
+        pollSystem.addEscrow(escrow);
         emit PollCreated(address(newPoll));  
         emit EscrowCreated(address(escrow));
 

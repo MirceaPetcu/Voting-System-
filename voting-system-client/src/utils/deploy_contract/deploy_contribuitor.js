@@ -94,7 +94,7 @@ async function deploy(){
 	const defaultAccount = providersAccounts[0];
 	console.log('deployer account:', defaultAccount);
 
-    const addr = localStorage.getItem('contractAddress');
+  const addr = localStorage.getItem('contractAddress');
 
 	const contractDeployer = myContract.deploy({
 		data: '0x' + bytecode,

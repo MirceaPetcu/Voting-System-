@@ -64,11 +64,6 @@ contract Escrow {
     }
 
     function releaseFunds() public {
-        address payable [] memory b = getBeneficiaries();
-        for (uint256 i = 0; i < b.length; i++) {
-            require(address(msg.sender) == b[i], "You must be one of the beneficiaries!");
-        }
-    
         uint256 amount = address(this).balance;
 
         (bool success, ) = address(beneficiaries).call{value: amount}("");

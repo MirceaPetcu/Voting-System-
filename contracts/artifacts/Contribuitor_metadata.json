@@ -1,0 +1,100 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract MultiBeneficiary",
+						"name": "_mb",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [],
+				"name": "contrib",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Contribuitor.sol": "Contribuitor"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Contribuitor.sol": {
+			"keccak256": "0xb43e80904944ecc789cb350c7f01c16f6089c62a28c2df2365052bc6d6dff01e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6c87c4a6abb85dd745d567b186fff7354e925e519508d438279f8258f6ffdde1",
+				"dweb:/ipfs/QmZtVse8SnYCQmGa3AD7jPNBFDdWYpkaxZBQASmJePFcED"
+			]
+		},
+		"contracts/Escrow.sol": {
+			"keccak256": "0xf20a2871e8ec5535e99f8940cd5a8c283fc09aefa8f0aada8f299706c9ef871b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://72b60515981acc2a23b02663590b8ed6b05b20a6b33ee5e2fb98dc445fd3ed52",
+				"dweb:/ipfs/QmeR8iFZN9t4nUSJASN1qK4uwfan8kpSEPTa9ThejpbRzJ"
+			]
+		},
+		"contracts/MultiBeneficiary.sol": {
+			"keccak256": "0xfa10accb76676d173eb09d7e11dbf37310d0f480beca8a8ef9f4f64c7452691d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://66d81c5ab6b95898ce9d3d1f6c50b941db35d0335ffe3ba2c734afc8bc803b20",
+				"dweb:/ipfs/QmQPfYYdRiDa4vibRcFPGWnbdcaoKWrafDJdUF9bAtjKsz"
+			]
+		},
+		"contracts/Poll.sol": {
+			"keccak256": "0x518ab65e16db7fc2e41e5f6d61dccca5da1c8c1ba63d5b66a4cf91d1e196bed6",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6badb5b0cb7a2b6e18a6accdcfbe8fa7defb3ac6c533b95c3cc396143fa668cc",
+				"dweb:/ipfs/QmR1Wqo4MDi3eYyf87wv15XXaTKM4r8wxrXKryLrQzQe3N"
+			]
+		},
+		"contracts/PollSystem.sol": {
+			"keccak256": "0x39c119d1a7b7a043011985d9f4caeb609414ed2cd1c8677037fdf581f253c833",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://03ffda64eb0a62ba3d28de64b0f01ffa2a411b0c1c549332fb198200dfa717cd",
+				"dweb:/ipfs/QmcsUsxUyu9n7WWpcXeermBYg85tysQ8eZMyz6sxtwsiqM"
+			]
+		}
+	},
+	"version": 1
+}

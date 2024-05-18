@@ -94,10 +94,13 @@ async function deploy(){
 	const defaultAccount = providersAccounts[0];
 	console.log('deployer account:', defaultAccount);
 
+  const addr = localStorage.getItem('pollsystemContractAddress');
+  console.log('Address:', addr);
 	const contractDeployer = myContract.deploy({
 		data: '0x' + bytecode,
-		// arguments: [1],
+		arguments: [addr],
 	});
+
 
 	const gas = await contractDeployer.estimateGas({
 		from: defaultAccount,

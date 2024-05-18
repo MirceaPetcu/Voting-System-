@@ -1,0 +1,183 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract Escrow",
+						"name": "escrow",
+						"type": "address"
+					}
+				],
+				"name": "addEscrow",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "contract Poll",
+						"name": "poll",
+						"type": "address"
+					}
+				],
+				"name": "addPoll",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "escrows",
+				"outputs": [
+					{
+						"internalType": "contract Escrow",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "pollId",
+						"type": "uint256"
+					}
+				],
+				"name": "getPoll",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPollCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getPolls",
+				"outputs": [
+					{
+						"internalType": "contract Poll[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "indexPoll",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "indexVote",
+						"type": "uint256"
+					}
+				],
+				"name": "vote",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/PollSystem.sol": "PollSystem"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Escrow.sol": {
+			"keccak256": "0xf20a2871e8ec5535e99f8940cd5a8c283fc09aefa8f0aada8f299706c9ef871b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://72b60515981acc2a23b02663590b8ed6b05b20a6b33ee5e2fb98dc445fd3ed52",
+				"dweb:/ipfs/QmeR8iFZN9t4nUSJASN1qK4uwfan8kpSEPTa9ThejpbRzJ"
+			]
+		},
+		"contracts/MultiBeneficiary.sol": {
+			"keccak256": "0xfa10accb76676d173eb09d7e11dbf37310d0f480beca8a8ef9f4f64c7452691d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://66d81c5ab6b95898ce9d3d1f6c50b941db35d0335ffe3ba2c734afc8bc803b20",
+				"dweb:/ipfs/QmQPfYYdRiDa4vibRcFPGWnbdcaoKWrafDJdUF9bAtjKsz"
+			]
+		},
+		"contracts/Poll.sol": {
+			"keccak256": "0x3337b572274d73350ee00c7bbb5c572ab0bc0a9b4c6ea1f710ef2be4b986fb57",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://1e11e29c41530c853faf264d1537b732de2f1da4f57b369366c96cd5aacfa4ed",
+				"dweb:/ipfs/QmTPR6JNJrGrBaKDbaHqyV38HjA7R4VCMnZKNDeBmayRht"
+			]
+		},
+		"contracts/PollSystem.sol": {
+			"keccak256": "0x847a2f99f0dce8ce3cd5fa0800900ee376cec23f0e6a88ab2e1d89a7bffad3c2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5d7df652a2f36f3e12697171b057fab7ea3776d13f5817e035de09551f6fac31",
+				"dweb:/ipfs/QmWYqJ351haR62Mfi6GHe1wVgucuJg6u6UiKszDAH3YMRo"
+			]
+		}
+	},
+	"version": 1
+}

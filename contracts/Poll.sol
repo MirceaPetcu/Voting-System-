@@ -57,14 +57,47 @@ contract Poll {
         pollData.escrow.setOptions(_options.length); 
     }
 
-    function returnMoney() external {
-        address payable [] memory beneficiaries = pollData.escrow.getBeneficiaries();
-        for (uint256 i = 0; i < beneficiaries.length; i++) {
-            require(address(msg.sender) == beneficiaries[i], "You must be one of the beneficiaries!");
+     function concatenateOptions(string[] memory options) internal pure returns (string memory) {
+        bytes memory concatenatedOptions = "";
+        for (uint i = 0; i < options.length; i++) {
+            concatenatedOptions = abi.encodePacked(concatenatedOptions, options[i]);
+            if (i < options.length - 1) {
+                concatenatedOptions = abi.encodePacked(concatenatedOptions, ",");
+            }
         }
-        
-        pollData.escrow.returnAllFunds(voters);
+        return string(concatenatedOptions);
     }
+
+    function uint2str(uint _i) internal pure returns (string memory) {
+        if (_i == 0) {
+            return "0";
+        }
+        uint j = _i;
+        uint len;
+        while (j != 0) {
+            len++;
+            j /= 10;
+        }
+        bytes memory bstr = new bytes(len);
+        uint k = len;
+        while (_i != 0) {
+            k = k - 1;
+            uint8 temp = (48 + uint8(_i - _i / 10 * 10));
+            bytes1 b1 = bytes1(temp);
+            bstr[k] = b1;
+            _i /= 10;
+        }
+        return string(bstr);
+    }
+
+    function getPoll() public view returns (string memory) {
+        string memory optionsConcatenated = concatenateOptions(pollData.options);
+        // return string(abi.encodePacked(pollData.title, ";", pollData.description, ";", optionsConcatenated, ";", uint2str(pollData.deadline)));
+        return string(abi.encodePacked(pollData.title, ";", pollData.description, ";", optionsConcatenated, ";", uint2str(pollData.deadline)));
+
+        // return pollData;
+    }
+
 
     function contribute() external payable onlyBeforeDeadline minETH {
         address payable [] memory beneficiaries = pollData.escrow.getBeneficiaries();

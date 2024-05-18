@@ -1,0 +1,120 @@
+{
+  "_format": "hh-sol-cache-2",
+  "files": {
+    "/home/simona/Desktop/Blockchain/Proiect/Voting-System-/test/contracts/Escrow.sol": {
+      "lastModificationDate": 1715997345167,
+      "contentHash": "b09453b7890f25798b476cd8ba8eba3b",
+      "sourceName": "contracts/Escrow.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./MultiBeneficiary.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Escrow"
+      ]
+    },
+    "/home/simona/Desktop/Blockchain/Proiect/Voting-System-/test/contracts/MultiBeneficiary.sol": {
+      "lastModificationDate": 1715997345167,
+      "contentHash": "244357254ea6189c2d1675ea30556b42",
+      "sourceName": "contracts/MultiBeneficiary.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Escrow.sol",
+        "./Poll.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "MultiBeneficiary"
+      ]
+    },
+    "/home/simona/Desktop/Blockchain/Proiect/Voting-System-/test/contracts/Poll.sol": {
+      "lastModificationDate": 1715997345167,
+      "contentHash": "13a5970c90493efda02eee185415a153",
+      "sourceName": "contracts/Poll.sol",
+      "solcConfig": {
+        "version": "0.8.24",
+        "settings": {
+          "evmVersion": "paris",
+          "optimizer": {
+            "enabled": false,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [
+        "./Escrow.sol"
+      ],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "Poll"
+      ]
+    }
+  }
+}

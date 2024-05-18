@@ -1,0 +1,236 @@
+{
+	"compiler": {
+		"version": "0.8.25+commit.b61c2a91"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "contract MultiBeneficiary",
+						"name": "_beneficiary",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "sender",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsReceived",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "contract MultiBeneficiary",
+						"name": "beneficiaries",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsReleased",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "option",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addVote",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getBeneficiaries",
+				"outputs": [
+					{
+						"internalType": "address payable[]",
+						"name": "",
+						"type": "address[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "options",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "voteCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalContributions",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "releaseFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address[]",
+						"name": "voters",
+						"type": "address[]"
+					}
+				],
+				"name": "returnAllFunds",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_totalVotes",
+						"type": "uint256"
+					}
+				],
+				"name": "setOptions",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "voteCounts",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "voteCount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalContributions",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct Escrow.Option[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Escrow.sol": "Escrow"
+		},
+		"evmVersion": "cancun",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Escrow.sol": {
+			"keccak256": "0x5da94b95af9dd9466a269786a72a9af60cc688f132c5315d8cd6da67a77b2955",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ed7235826dc21a0a2a6812e4357b0290634bc24ac5166aac2bee4ad6bbf608b3",
+				"dweb:/ipfs/Qmamegw5Rtu5rbkxSksqqAwSEhfRcxXFu1Vk5VJPFYvv43"
+			]
+		},
+		"contracts/MultiBeneficiary.sol": {
+			"keccak256": "0xfa10accb76676d173eb09d7e11dbf37310d0f480beca8a8ef9f4f64c7452691d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://66d81c5ab6b95898ce9d3d1f6c50b941db35d0335ffe3ba2c734afc8bc803b20",
+				"dweb:/ipfs/QmQPfYYdRiDa4vibRcFPGWnbdcaoKWrafDJdUF9bAtjKsz"
+			]
+		},
+		"contracts/Poll.sol": {
+			"keccak256": "0xaa79fb36b098143a427f2153519168380f8760f717f37973a7a67b67effe74ad",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://01c2c295933c0d12151fa2a5d95be05f75db29fa7c2235c0571130d4964266be",
+				"dweb:/ipfs/QmUThPfyoLGrAHBrj4Uz8ePiSrBZFDEr8FWQBF2MgeKq2J"
+			]
+		},
+		"contracts/PollSystem.sol": {
+			"keccak256": "0x6fea772d202fb0d4dbc469802f23900ad6e53829cd60d1fb0c245b74e826ea8d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f29550496363c8122dd54da716b4e81186be8a3f6ea411d51c4d4203241d7fdc",
+				"dweb:/ipfs/Qmek3HiuFQGK6Pv83mkgZyM2Qdwf1KFFUgQ5WaJ6ULriZR"
+			]
+		}
+	},
+	"version": 1
+}
